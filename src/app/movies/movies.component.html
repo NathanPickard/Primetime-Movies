@@ -1,7 +1,5 @@
 <div fxLayout="column" fxLayoutAlign="center center" style="padding: 20px 0px 20px;">
-
   <mat-card>
-
     <div fxLayoutAlign="center center" fxLayout.lt-sm="column" fxLayoutGap="30px">
       <form [formGroup]="searchMovieForm" (ngSubmit)="searchMovies()">
         <mat-form-field appearance="outline">
@@ -12,11 +10,9 @@
           </button>
         </mat-form-field>
       </form>
-
       <mat-form-field>
         <!-- <mat-label>Select movie times</mat-label> -->
         <mat-label>Search movies by:</mat-label>
-
         <mat-select [(value)]="selected">
           <mat-option value="Now Playing" (click)="searchMoviesNowPlaying()">
             <!-- <mat-icon>new_releases</mat-icon>Now playing -->
@@ -59,7 +55,6 @@
       </a>
     </div>
   </mat-card>
-
 </div>
 
 <div fxLayoutAlign="center center">
@@ -84,29 +79,24 @@
 </div> -->
 
 <div *ngIf="foundMovieResultsData" fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 12px 12px;">
-
   <!-- <div *ngFor="let foundMovieFullDetail of foundMovieFullDetails; let i = index" [@listAnimation] style="padding: 8px 8px"> -->
   <div *ngFor="let foundMovieResults of foundMovieResultsData; let i = index" [@listAnimation] style="padding: 8px 8px">
     <mat-card style="width: 300px;" fxLayout="column" fxLayoutAlign="center center">
-
       <mat-card-content>
         <!-- <a *ngIf="foundMovieResults[i]" (click)="openPosterDialog(foundMovieResult)" fxLayoutAlign="center center" -->
         <a *ngIf="foundMovieResultsImages[i] !== 'noImage'" (click)="openPosterDialog(foundMovieResults)"
           fxLayoutAlign="center center" style="cursor: pointer;">
           <img src="{{ foundMovieResultsImages[i] }}">
         </a>
-
         <a *ngIf="foundMovieResultsImages[i] == 'noImage'" (click)="openPosterDialog(foundMovieResults)"
           fxLayout="column" fxLayoutAlign="center center" style="padding: 25px 0px; cursor: pointer;">
           <mat-icon>theaters</mat-icon>
           (Image not available)
         </a>
-
         <h3 fxLayoutAlign="center center" (click)="openPosterDialog(foundMovieResults)"
           style="margin-top: 8px; cursor: pointer; text-align: center;">
           {{ foundMovieResults.original_title }}
         </h3>
-
         <!-- <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -119,7 +109,6 @@
         </mat-expansion-panel> -->
       </mat-card-content>
     </mat-card>
-
   </div>
 </div>
 
