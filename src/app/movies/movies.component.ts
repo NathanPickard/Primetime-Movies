@@ -27,8 +27,8 @@ export class MoviesComponent implements OnInit {
   foundMoviesMostPopular: any[];
   foundMoviesSearch: any[];
 
+  // Images
   foundMovieResultsImages: any[];
-
   foundMoviesNowPlayingImages: any[];
   foundMoviesUpcomingImages: any[];
   foundMoviesMostPopularImages: any[];
@@ -213,7 +213,6 @@ export class MoviesComponent implements OnInit {
         this.foundMovieResultsImages.push('noImage');
       }
     }
-
     console.log(Object.keys(this.foundMovieFullDetails));
     console.log(this.foundMovieResultsData);
     console.log(this.foundMovieResultsImages);
@@ -241,7 +240,6 @@ export class MoviesComponent implements OnInit {
     }
     console.log(this.foundMoviesSearch);
   }
-
   handleError(error) {
     console.log(error);
   }
