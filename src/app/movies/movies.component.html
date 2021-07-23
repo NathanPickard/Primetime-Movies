@@ -56,11 +56,9 @@
     </div>
   </mat-card>
 </div>
-
 <div fxLayoutAlign="center center">
   <h2> {{ selected }}</h2>
 </div>
-
 <div *ngIf="searching" fxLayoutAlign="center center" style="padding-top: 150px;">
   <mat-spinner color="accent"></mat-spinner>
 </div>
@@ -111,10 +109,8 @@
     </mat-card>
   </div>
 </div>
-
 <h2 *ngIf="foundSearchResults" fxLayoutAlign="center center">Search results for
   "{{ searchMovieForm.get('searchQuery').value }}"</h2>
-
 <div *ngIf="foundMoviesSearch" fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 15px 15px;">
   <div *ngFor="let foundMovieSearch of foundMoviesSearch; let i = index" style="padding: 8px 8px">
     <mat-card style="width: 300px;" fxLayout="column" fxLayoutAlign="center center">
