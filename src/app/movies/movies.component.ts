@@ -59,7 +59,6 @@ export class MoviesComponent implements OnInit {
     this.foundMoviesMostPopularImages = [];
     this.foundMoviesSearchImages = [];
     // this.foundMovieFullDetails = [];
-
     this.foundMovieResultsImages = [];
     this.foundMovieDetailsResults = [];
 
