@@ -17,26 +17,25 @@ import { MovieDetailsComponent } from './movies/movie-details/movie-details.comp
 import { environment } from '../environments/environment';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AboutComponent,
-    MoviesComponent,
-    MoviePosterComponent,
-    MovieDetailsComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MaterialModule,
-    FlexLayoutModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    BrowserAnimationsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
-  entryComponents: [MoviePosterComponent, AboutComponent]
+    declarations: [
+        AppComponent,
+        AboutComponent,
+        MoviesComponent,
+        MoviePosterComponent,
+        MovieDetailsComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MaterialModule,
+        FlexLayoutModule,
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+        BrowserAnimationsModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

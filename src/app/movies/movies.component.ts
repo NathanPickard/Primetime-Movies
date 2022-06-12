@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, HostBinding, Host } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { trigger, transition, animate, style, query, stagger, state } from '@angular/animations';
 
@@ -34,8 +34,8 @@ export class MoviesComponent implements OnInit {
   foundMoviesMostPopularImages: any[];
   foundMoviesSearchImages: any[];
 
-  searchMovieForm: FormGroup;
-  movieReleaseTypeControl = new FormControl('');
+  searchMovieForm: UntypedFormGroup;
+  movieReleaseTypeControl = new UntypedFormControl('');
 
   searching = false;
   imageNotAvailable = false;
@@ -64,8 +64,8 @@ export class MoviesComponent implements OnInit {
 
     this.searchMoviesNowPlaying();
 
-    this.searchMovieForm = new FormGroup({
-      'searchQuery': new FormControl('')
+    this.searchMovieForm = new UntypedFormGroup({
+      'searchQuery': new UntypedFormControl('')
     });
   }
 
