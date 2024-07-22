@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -16,26 +16,19 @@ import { MovieDetailsComponent } from './movies/movie-details/movie-details.comp
 
 import { environment } from '../environments/environment';
 
-@NgModule({
-    declarations: [
+@NgModule({ declarations: [
         AppComponent,
         AboutComponent,
         MoviesComponent,
         MoviePosterComponent,
         MovieDetailsComponent
     ],
-    imports: [
-        BrowserModule,
+    bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
-        HttpClientModule,
         ReactiveFormsModule,
         FormsModule,
         MaterialModule,
         FlexLayoutModule,
         ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-        BrowserAnimationsModule
-    ],
-    providers: [],
-    bootstrap: [AppComponent]
-})
+        BrowserAnimationsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
