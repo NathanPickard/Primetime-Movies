@@ -10,10 +10,11 @@ import { MovieSearchService } from '../shared/movie-search.service';
 import { listAnimation } from '../animations';
 
 @Component({
-  selector: 'app-movies',
-  templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.scss'],
-  animations: [listAnimation]
+    selector: 'app-movies',
+    templateUrl: './movies.component.html',
+    styleUrls: ['./movies.component.scss'],
+    animations: [listAnimation],
+    standalone: false
 })
 export class MoviesComponent implements OnInit {
 
@@ -245,8 +246,9 @@ export class MoviesComponent implements OnInit {
 }
 
 @Component({
-  selector: 'app-movie-poster',
-  templateUrl: './movie-poster.component.html'
+    selector: 'app-movie-poster',
+    templateUrl: './movie-poster.component.html',
+    standalone: false
 })
 export class MoviePosterComponent {
 

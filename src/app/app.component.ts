@@ -2,9 +2,10 @@ import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    standalone: false
 })
 export class AppComponent {
 
@@ -18,8 +19,9 @@ export class AppComponent {
 }
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html'
+    selector: 'app-about',
+    templateUrl: './about.component.html',
+    standalone: false
 })
 export class AboutComponent {
 
