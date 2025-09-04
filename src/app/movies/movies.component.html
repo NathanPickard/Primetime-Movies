@@ -30,114 +30,134 @@
       </mat-form-field>
       <!-- <mat-form-field>
 
-        <mat-label>Select movie times</mat-label> -->
+      <mat-label>Select movie times</mat-label> -->
       <!-- <mat-label>Search movies by:</mat-label> -->
 
       <!-- <mat-select [(ngModel)]="selectedValue"> -->
       <!-- <mat-select [formControl]="movieReleaseTypeControl" (selectionChange)="onMovieTypeChange($event)">
-          <mat-option *ngFor="let movie of movieReleaseType" [value]="movie.value"> -->
-      <!-- <mat-icon>new_releases</mat-icon>Now playing -->
-      <!-- {{ movie.viewValue }}
-          </mat-option>
-        </mat-select>
+      <mat-option *ngFor="let movie of movieReleaseType" [value]="movie.value"> -->
+        <!-- <mat-icon>new_releases</mat-icon>Now playing -->
+        <!-- {{ movie.viewValue }}
+      </mat-option>
+    </mat-select>
 
-      </mat-form-field> -->
-      <!-- </mat-card> -->
-    </div>
-    <div fxLayout="column" fxLayoutAlign="center center">
-      <!-- <div> -->
-      <h5 style="margin-top: 0px; margin-bottom: 8px;">Results powered by:</h5>
-      <a href="https://www.themoviedb.org/" style="text-align: center">
-        <img
-          src="https://website-images-nathan.s3-us-west-2.amazonaws.com/blue_long_1-8ba2ac31f354005783fab473602c34c3f4fd207150182061e425d366e4f34596.svg"
-          style="width: 55%;">
-      </a>
-    </div>
-  </mat-card>
+  </mat-form-field> -->
+<!-- </mat-card> -->
+</div>
+<div fxLayout="column" fxLayoutAlign="center center">
+  <!-- <div> -->
+  <h5 style="margin-top: 0px; margin-bottom: 8px;">Results powered by:</h5>
+  <a href="https://www.themoviedb.org/" style="text-align: center">
+    <img
+      src="https://website-images-nathan.s3-us-west-2.amazonaws.com/blue_long_1-8ba2ac31f354005783fab473602c34c3f4fd207150182061e425d366e4f34596.svg"
+      style="width: 55%;">
+  </a>
+</div>
+</mat-card>
 </div>
 <div fxLayoutAlign="center center">
   <h2> {{ selected }}</h2>
 </div>
-<div *ngIf="searching" fxLayoutAlign="center center" style="padding-top: 150px;">
-  <mat-spinner color="accent"></mat-spinner>
-</div>
+@if (searching) {
+  <div fxLayoutAlign="center center" style="padding-top: 150px;">
+    <mat-spinner color="accent"></mat-spinner>
+  </div>
+}
 
 <!-- <div *ngIf="foundMovieResults" fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 12px 12px;">
 
-  <div *ngFor="let foundMovieFullDetail of foundMovieFullDetails; let i = index" [@listAnimation]
-    style="padding: 8px 8px">
-    <mat-card style="width: 300px;" fxLayout="column" fxLayoutAlign="center center">
+<div *ngFor="let foundMovieFullDetail of foundMovieFullDetails; let i = index" [@listAnimation]
+  style="padding: 8px 8px">
+  <mat-card style="width: 300px;" fxLayout="column" fxLayoutAlign="center center">
 
 
-      <h2 *ngIf="foundMovieFullDetail.tagline">Tagline: {{ foundMovieFullDetail.tagline }}</h2>
+    <h2 *ngIf="foundMovieFullDetail.tagline">Tagline: {{ foundMovieFullDetail.tagline }}</h2>
 
-    </mat-card>
-  </div>
+  </mat-card>
+</div>
 </div> -->
 
-<div *ngIf="foundMovieResultsData" fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 12px 12px;">
-  <div *ngFor="let foundMovieResults of foundMovieResultsData; let i = index" [@listAnimation] style="padding: 8px 8px">
-    <mat-card style="width: 300px;" fxLayout="column" fxLayoutAlign="center center">
-      <mat-card-content>
-        <!-- <a *ngIf="foundMovieResults[i]" (click)="openPosterDialog(foundMovieResult)" fxLayoutAlign="center center" -->
-        <a *ngIf="foundMovieResultsImages[i] !== 'noImage'" (click)="openPosterDialog(foundMovieResults)"
-          fxLayoutAlign="center center" style="cursor: pointer;">
-          <img src="{{ foundMovieResultsImages[i] }}">
-        </a>
-        <a *ngIf="foundMovieResultsImages[i] == 'noImage'" (click)="openPosterDialog(foundMovieResults)"
-          fxLayout="column" fxLayoutAlign="center center" style="padding: 25px 0px; cursor: pointer;">
-          <mat-icon>theaters</mat-icon>
-          (Image not available)
-        </a>
-        <h3 fxLayoutAlign="center center" (click)="openPosterDialog(foundMovieResults)"
-          style="margin-top: 8px; cursor: pointer; text-align: center;">
-          {{ foundMovieResults.original_title }}
-        </h3>
-        <!-- <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Details
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <h3>Overview:</h3>
-          {{ foundMovieResults.overview }}
-          <h3>Rating: {{ foundMovieResults.vote_average }}</h3>
-        </mat-expansion-panel> -->
-      </mat-card-content>
-    </mat-card>
-  </div>
+@if (foundMovieResultsData) {
+  <div fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 12px 12px;">
+    @for (foundMovieResults of foundMovieResultsData; track foundMovieResults; let i = $index) {
+      <div [@listAnimation] style="padding: 8px 8px">
+        <mat-card style="width: 300px;" fxLayout="column" fxLayoutAlign="center center">
+          <mat-card-content>
+            <!-- <a *ngIf="foundMovieResults[i]" (click)="openPosterDialog(foundMovieResult)" fxLayoutAlign="center center" -->
+            @if (foundMovieResultsImages[i] !== 'noImage') {
+              <a (click)="openPosterDialog(foundMovieResults)"
+                fxLayoutAlign="center center" style="cursor: pointer;">
+                <img src="{{ foundMovieResultsImages[i] }}">
+              </a>
+            }
+            @if (foundMovieResultsImages[i] == 'noImage') {
+              <a (click)="openPosterDialog(foundMovieResults)"
+                fxLayout="column" fxLayoutAlign="center center" style="padding: 25px 0px; cursor: pointer;">
+                <mat-icon>theaters</mat-icon>
+                (Image not available)
+              </a>
+            }
+            <h3 fxLayoutAlign="center center" (click)="openPosterDialog(foundMovieResults)"
+              style="margin-top: 8px; cursor: pointer; text-align: center;">
+              {{ foundMovieResults.original_title }}
+            </h3>
+            <!-- <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Details
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <h3>Overview:</h3>
+            {{ foundMovieResults.overview }}
+            <h3>Rating: {{ foundMovieResults.vote_average }}</h3>
+          </mat-expansion-panel> -->
+        </mat-card-content>
+      </mat-card>
+    </div>
+  }
 </div>
-<h2 *ngIf="foundSearchResults" fxLayoutAlign="center center">Search results for
+}
+@if (foundSearchResults) {
+  <h2 fxLayoutAlign="center center">Search results for
   "{{ searchMovieForm.get('searchQuery').value }}"</h2>
-<div *ngIf="foundMoviesSearch" fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 15px 15px;">
-  <div *ngFor="let foundMovieSearch of foundMoviesSearch; let i = index" style="padding: 8px 8px">
-    <mat-card style="width: 300px;" fxLayout="column" fxLayoutAlign="center center">
-      <mat-card-header>
-        <mat-card-title style="text-align: center;">
-          {{ foundMovieSearch.original_title }}
-        </mat-card-title>
-        <mat-card-subtitle fxLayoutAlign="center center">
-          Out: <mat-icon>event</mat-icon>{{ foundMovieSearch.release_date | date:'mediumDate' }}
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <a *ngIf="foundMoviesSearchImages[i] !== 'noImage'" href="" fxLayoutAlign="center center">
-          <img src="{{ foundMoviesSearchImages[i] }}">
-        </a>
-        <div *ngIf="foundMoviesSearchImages[i] == 'noImage'" fxLayout="column" fxLayoutAlign="center center"
-          style="padding: 25px 0px;">
-          <mat-icon>theaters</mat-icon>
-          (Image not available)
-        </div>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Details
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          {{ foundMovieSearch.overview }}
-        </mat-expansion-panel>
-      </mat-card-content>
-    </mat-card>
+}
+@if (foundMoviesSearch) {
+  <div fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 15px 15px;">
+    @for (foundMovieSearch of foundMoviesSearch; track foundMovieSearch; let i = $index) {
+      <div style="padding: 8px 8px">
+        <mat-card style="width: 300px;" fxLayout="column" fxLayoutAlign="center center">
+          <mat-card-header>
+            <mat-card-title style="text-align: center;">
+              {{ foundMovieSearch.original_title }}
+            </mat-card-title>
+            <mat-card-subtitle fxLayoutAlign="center center">
+              Out: <mat-icon>event</mat-icon>{{ foundMovieSearch.release_date | date:'mediumDate' }}
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            @if (foundMoviesSearchImages[i] !== 'noImage') {
+              <a href="" fxLayoutAlign="center center">
+                <img src="{{ foundMoviesSearchImages[i] }}">
+              </a>
+            }
+            @if (foundMoviesSearchImages[i] == 'noImage') {
+              <div fxLayout="column" fxLayoutAlign="center center"
+                style="padding: 25px 0px;">
+                <mat-icon>theaters</mat-icon>
+                (Image not available)
+              </div>
+            }
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Details
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              {{ foundMovieSearch.overview }}
+            </mat-expansion-panel>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    }
   </div>
-</div>
+}
